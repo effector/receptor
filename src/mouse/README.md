@@ -5,7 +5,13 @@
 #### `mouseup`, `mousedown`, `mousepress`, `click`, `mousewheel`
 
 ```ts
-import { mouseup, mousedown, mousepress, click, mousewheel } from "dom-effects";
+import {
+  mouseup,
+  mousedown,
+  mousepress,
+  click,
+  mousewheel,
+} from "@effector/receptor";
 
 mouseup.watch(console.log);
 mousedown.watch(console.log);
@@ -20,7 +26,7 @@ mousewheel.watch(console.log);
 > In cases such as drag-and-drop, it's important to prevent ghost clicks
 
 ```ts
-import { click, nonGhost, onTarget, createRefStore } from "dom-effects";
+import { click, nonGhost, onTarget, createRefStore } from "@effector/receptor";
 
 const canvasRef = createRefStore<HTMLDivElement>();
 

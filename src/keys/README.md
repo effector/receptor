@@ -5,7 +5,7 @@
 #### `keyup`, `keydown`, `keypress`
 
 ```ts
-import { keyup, keydown, keypress } from "dom-effects";
+import { keyup, keydown, keypress } from "@effector/receptor";
 
 keyup.watch(console.log);
 keydown.watch(console.log);
