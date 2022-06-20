@@ -36,9 +36,13 @@ export const setup = <T extends Event<any> | Effect<any, any, any>>(params: {
   });
 };
 
-export const createSubscriber = (getTarget, evtName, extraParams = {}) => {
-  return (callback) => {
-    let target;
+export const createSubscriber = <T>(
+  getTarget: () => T,
+  evtName: string,
+  extraParams: AddEventListenerOptions = {}
+) => {
+  return (callback: Event<any>) => {
+    let target: T;
     try {
       target = getTarget();
     } catch {
@@ -52,7 +56,7 @@ export const createSubscriber = (getTarget, evtName, extraParams = {}) => {
   };
 };
 
-export const subscribe = <T extends Event<any>>(params: {
+export const setupListener = <T extends Event<any>>(params: {
   type: string;
   event: T;
   target: () => any;
@@ -60,7 +64,7 @@ export const subscribe = <T extends Event<any>>(params: {
 }) => {
   setup({
     event: params.event,
-    setup: createSubscriber(params.target, params.type, params.modifiers ?? {}),
+    cb: createSubscriber(params.target, params.type, params.modifiers || {}),
   });
 };
 
@@ -69,7 +73,7 @@ export const setupDocument = <T extends Event<any>>(
   event: T,
   modifiers: AddEventListenerOptions = {}
 ) => {
-  return subscribe({ type, event, target: () => document, modifiers });
+  return setupListener({ type, event, target: () => document, modifiers });
 };
 
 export const setupWindow = <T extends Event<any>>(
@@ -77,7 +81,7 @@ export const setupWindow = <T extends Event<any>>(
   event: T,
   modifiers: AddEventListenerOptions = {}
 ) => {
-  return subscribe({ type, event, target: () => window, modifiers });
+  return setupListener({ type, event, target: () => window, modifiers });
 };
 
 export const setupNavigator = <T extends Event<any>>(
@@ -85,5 +89,5 @@ export const setupNavigator = <T extends Event<any>>(
   event: T,
   modifiers: AddEventListenerOptions = {}
 ) => {
-  return subscribe({ type, event, target: () => navigator, modifiers });
+  return setupListener({ type, event, target: () => navigator, modifiers });
 };
