@@ -3,7 +3,10 @@ import { createEvent, createStore, Event, guard, sample } from "effector";
 
 import { setupDocument, setupWindow } from "../lib/setup";
 
-export const $mouseDownPoint = createStore({ x: 0, y: 0 });
+export const $mouseDownPoint = createStore(
+  { x: 0, y: 0 },
+  { serialize: "ignore" }
+);
 
 export const mousedown = createEvent<MouseEvent>();
 export const mouseup = createEvent<MouseEvent>();
