@@ -1,13 +1,13 @@
-import { createEvent, createStore } from 'effector'
+import { createEvent, createStore } from "effector";
 
-export const online = createEvent<Event>()
-export const offline = createEvent<Event>()
+import { setupWindow } from "../lib/setup";
 
-export const $isOnline = createStore(navigator.onLine)
+export const online = createEvent<Event>();
+export const offline = createEvent<Event>();
 
-$isOnline.on(online, () => true).on(offline, () => false)
+export const $isOnline = createStore(navigator.onLine);
 
-if (typeof window !== 'undefined') {
-  window.addEventListener('online', online)
-  window.addEventListener('offline', offline)
-}
+$isOnline.on(online, () => true).on(offline, () => false);
+
+setupWindow("online", online);
+setupWindow("offline", offline);

@@ -1,6 +1,8 @@
 import { getDistance } from "./get-distance";
 import { createEvent, createStore, Event, guard, sample } from "effector";
 
+import { setupDocument, setupWindow } from "../lib/setup";
+
 export const $mouseDownPoint = createStore({ x: 0, y: 0 });
 
 export const mousedown = createEvent<MouseEvent>();
@@ -9,21 +11,11 @@ export const mousemove = createEvent<MouseEvent>();
 export const click = createEvent<MouseEvent>();
 export const mousewheel = createEvent<WheelEvent>();
 
-if (typeof document !== "undefined") {
-  document.addEventListener("mousedown", (evt) => mousedown(evt));
-  document.addEventListener("mouseup", (evt) => mouseup(evt));
-  document.addEventListener("mousemove", (evt) => mousemove(evt));
-  document.addEventListener("click", (evt) => click(evt));
-}
-if (typeof window !== "undefined") {
-  window.addEventListener(
-    "mousewheel",
-    (evt) => mousewheel(evt as WheelEvent),
-    {
-      passive: false,
-    }
-  );
-}
+setupDocument("mousedown", mousedown);
+setupDocument("mouseup", mouseup);
+setupDocument("mousemove", mousemove);
+setupDocument("click", click);
+setupWindow("mousewheel", mousewheel, { passive: true });
 
 $mouseDownPoint.on(mousedown, (_prev, evt) => ({ x: evt.pageX, y: evt.pageY }));
 
@@ -34,14 +26,16 @@ $mouseDownPoint.on(mousedown, (_prev, evt) => ({ x: evt.pageX, y: evt.pageY }));
 export const nonGhost = <Evt extends Event<MouseEvent>>(params: {
   clock: Evt;
 }) => {
+  const clickTriggered = guard({
+    source: $mouseDownPoint,
+    clock: params.clock,
+    filter: (point, evt) => {
+      return getDistance(point, { x: evt.pageX, y: evt.pageY }) < 10;
+    },
+  });
+
   return sample({
-    clock: guard({
-      source: $mouseDownPoint,
-      clock: params.clock,
-      filter: (point, evt) => {
-        return getDistance(point, { x: evt.pageX, y: evt.pageY }) < 10;
-      },
-    }),
+    clock: clickTriggered,
     source: params.clock,
   });
 };
