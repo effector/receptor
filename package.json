@@ -1,10 +1,18 @@
 {
   "name": "effector-receptor",
   "version": "0.0.0",
-  "private": true,
-  "type": "module",
   "peerDependencies": {
     "effector": "^22.3.0"
+  },
+  "main": "./index.js",
+  "module": "./index.mjs",
+  "typings": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js",
+      "default": "./index.mjs"
+    },
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
