@@ -5,7 +5,7 @@
 #### `createRefStore` - store a single ref
 
 ```ts
-import { createRefStore } from '@effector/receptor';
+import { createRefStore } from 'effector-receptor';
 
 const inputRef = createRefStore<HTMLInputElement>();
 
@@ -24,7 +24,7 @@ inputRef.$current.watch((el) => {
 #### `createRefListStore` - store a list of refs
 
 ```ts
-import { createRefListStore } from '@effector/receptor';
+import { createRefListStore } from 'effector-receptor';
 
 const inputRefs = createRefListStore<HTMLInputElement>();
 
@@ -45,7 +45,7 @@ inputRefs.$current.watch((elements) => {
 #### `createRefMapStore` - key-ref store
 
 ```ts
-import { createRefMapStore } from '@effector/receptor';
+import { createRefMapStore } from 'effector-receptor';
 
 const inputRefs = createRefMapStore<HTMLInputElement>();
 
