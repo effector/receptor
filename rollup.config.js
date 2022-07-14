@@ -1,6 +1,7 @@
 const { terser } = require('rollup-plugin-terser');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
+const Package = require('./package.json')
 
 const plugins = [
   nodeResolve({ jsnext: true, skip: ['effector'], extensions: ['.js', '.mjs'] }),
