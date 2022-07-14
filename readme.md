@@ -6,13 +6,9 @@ Web API bindings for ☄️ [effector](https://github.com/effector/effector)
 
 ```shell
 yarn add effector effector-receptor
-```
-
-```shell
+# or
 npm i effector effector-receptor
-```
-
-```shell
+# or
 pnpm add effector effector-receptor
 ```
 
