@@ -1,9 +1,16 @@
 {
   "name": "effector-receptor",
   "version": "0.0.0",
-  "peerDependencies": {
-    "effector": "^22.3.0"
+  "repository": "git@github.com:effector/receptor.git",
+  "description": "",
+  "scripts": {
+    "test": "",
+    "build": "rollup --config ./rollup.config.js",
+    "prepublishOnly": "yarn build"
   },
+  "files": [
+    "dist"
+  ],
   "main": "./dist/receptor.cjs.js",
   "module": "./dist/receptor.mjs",
   "typings": "./dist/receptor.d.ts",
@@ -14,6 +21,9 @@
       "require": "./index.js",
       "default": "./index.mjs"
     },
+  },
+  "peerDependencies": {
+    "effector": "^22.3.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
