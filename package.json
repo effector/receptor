@@ -1,35 +1,35 @@
 {
-  "name": "effector-receptor",
-  "version": "0.0.0",
-  "repository": "git@github.com:effector/receptor.git",
-  "description": "",
-  "scripts": {
-    "test": "",
-    "build": "rollup --config ./rollup.config.js",
-    "prepublishOnly": "yarn build"
-  },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/receptor.cjs.js",
-  "module": "./dist/receptor.mjs",
-  "typings": "./dist/receptor.d.ts",
-  "browser": "./dist/receptor.umd.js",
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js",
-      "default": "./index.mjs"
-    },
-  },
-  "peerDependencies": {
-    "effector": "^22.3.0"
-  },
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "effector": "^22.3.0",
-    "rollup": "^2.75.6",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.7.3"
-  }
+	"name": "effector-receptor",
+	"version": "0.0.0",
+	"repository": "git@github.com:effector/receptor.git",
+	"description": "",
+	"scripts": {
+		"test": "",
+		"build": "rollup --config ./rollup.config.js",
+		"prepublishOnly": "yarn build"
+	},
+	"files": [
+		"dist"
+	],
+	"main": "./dist/receptor.cjs.js",
+	"module": "./dist/receptor.mjs",
+	"typings": "./dist/receptor.d.ts",
+	"browser": "./dist/receptor.umd.js",
+	"exports": {
+		".": {
+			"import": "./index.mjs",
+			"require": "./index.js",
+			"default": "./index.mjs"
+		}
+	},
+	"peerDependencies": {
+		"effector": "^22.3.0"
+	},
+	"devDependencies": {
+		"@rollup/plugin-node-resolve": "^13.3.0",
+		"effector": "^22.3.0",
+		"rollup": "^2.75.6",
+		"rollup-plugin-terser": "^7.0.2",
+		"typescript": "^4.7.3"
+	}
 }
