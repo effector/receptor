@@ -4,9 +4,10 @@
   "repository": "git@github.com:effector/receptor.git",
   "description": "",
   "scripts": {
-    "test": "",
+    "test": "jest --passWithNoTests",
     "build": "rollup --config ./rollup.config.js",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "prepare": "husky install"
   },
   "files": [
     "dist",
