@@ -1,6 +1,6 @@
-import { createEvent, createStore } from "effector";
+import { createEvent, createStore } from 'effector';
 
-import { setupDocument } from "../lib/setup";
+import { setupDocument } from '../lib/setup';
 
 export const keyup = createEvent<KeyboardEvent>();
 export const keydown = createEvent<KeyboardEvent>();
@@ -14,6 +14,6 @@ $isShiftDown.on([keyup, keydown], (prev, evt) => evt.shiftKey);
 $isCtrlDown.on([keyup, keydown], (prev, evt) => evt.ctrlKey);
 $isAltDown.on([keyup, keydown], (prev, evt) => evt.altKey);
 
-setupDocument("keyup", keyup);
-setupDocument("keydown", keydown);
-setupDocument("keypress", keypress);
+setupDocument('keyup', keyup);
+setupDocument('keydown', keydown);
+setupDocument('keypress', keypress);

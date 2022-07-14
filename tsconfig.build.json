@@ -8,13 +8,6 @@
     "outDir": "./dist",
     "allowJs": false
   },
-  "exclude": [
-    "**/*.test.ts",
-    "*.test.ts",
-    "integration",
-    "**/*.d.ts",
-    "dist",
-    "test-typings"
-  ],
+  "exclude": ["**/*.test.ts", "*.test.ts", "**/*.d.ts", "dist"],
   "include": ["src"]
 }

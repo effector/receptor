@@ -4,8 +4,8 @@ module.exports = function receptorBabelPreset() {
       [
         'effector/babel-plugin',
         { factories: ['effector-receptor'], noDefaults: true },
-        'effector-receptor'
-      ]
-    ]
-  }
-}
+        'effector-receptor',
+      ],
+    ],
+  };
+};

@@ -1,4 +1,4 @@
-import { createEffect } from "effector";
+import { createEffect } from 'effector';
 
 export const preventDefault = createEffect((event: Event) => {
   return event.preventDefault();

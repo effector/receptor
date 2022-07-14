@@ -5,12 +5,12 @@
 #### `createRefStore` - store a single ref
 
 ```ts
-import { createRefStore } from "@effector/receptor";
+import { createRefStore } from '@effector/receptor';
 
 const inputRef = createRefStore<HTMLInputElement>();
 
 // Store ref (e.g. on component mount)
-inputRef.refAdded(document.getElementById("my-input"));
+inputRef.refAdded(document.getElementById('my-input'));
 
 // Remvoe ref (e.g. on component unmount)
 inputRef.refRemoved();
@@ -24,11 +24,11 @@ inputRef.$current.watch((el) => {
 #### `createRefListStore` - store a list of refs
 
 ```ts
-import { createRefListStore } from "@effector/receptor";
+import { createRefListStore } from '@effector/receptor';
 
 const inputRefs = createRefListStore<HTMLInputElement>();
 
-const el = document.getElementById("my-input");
+const el = document.getElementById('my-input');
 
 // Store ref (e.g. on component mount)
 inputRefs.refAdded(el);
@@ -45,20 +45,20 @@ inputRefs.$current.watch((elements) => {
 #### `createRefMapStore` - key-ref store
 
 ```ts
-import { createRefMapStore } from "@effector/receptor";
+import { createRefMapStore } from '@effector/receptor';
 
 const inputRefs = createRefMapStore<HTMLInputElement>();
 
-const el = document.getElementById("my-input");
+const el = document.getElementById('my-input');
 
 // Store ref (e.g. on component mount)
 inputRefs.refAdded({
-  key: "my-input",
+  key: 'my-input',
   current: el,
 });
 
 // Remvoe ref (e.g. on component unmount)
-inputRefs.refRemoved("my-input");
+inputRefs.refRemoved('my-input');
 
 // Listen to refs change
 inputRefs.$current.watch((elements) => {

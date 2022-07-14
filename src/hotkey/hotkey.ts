@@ -1,8 +1,7 @@
-import { guard, Event, Store, Target, sample } from "effector";
+import { Event, guard, sample, Store, Target } from 'effector';
 
-import { keyup, keydown, keypress } from "../keys";
-
-import { validateHotkey } from "./validate-hotkey";
+import { keydown, keypress, keyup } from '../keys';
+import { validateHotkey } from './validate-hotkey';
 
 const keyEvents = {
   keyup,
@@ -11,12 +10,9 @@ const keyEvents = {
 };
 
 interface hotkeyT {
-  (
-    key: KeyboardEvent["key"],
-    type?: keyof typeof keyEvents
-  ): Event<KeyboardEvent>;
+  (key: KeyboardEvent['key'], type?: keyof typeof keyEvents): Event<KeyboardEvent>;
   (params: {
-    key: KeyboardEvent["key"];
+    key: KeyboardEvent['key'];
     type?: keyof typeof keyEvents;
     filter?: Store<boolean>;
     target?: Target;
@@ -26,11 +22,11 @@ interface hotkeyT {
 /** Returns `Event` that gets triggered when a certain key pressed (or keyup/keydown events triggered) */
 export const hotkey: hotkeyT = (...args) => {
   const normalizedParams =
-    typeof args[0] === "string"
-      ? { key: args[0], type: (args[1] || "keyup") as keyof typeof keyEvents }
+    typeof args[0] === 'string'
+      ? { key: args[0], type: (args[1] || 'keyup') as keyof typeof keyEvents }
       : {
           key: args[0].key,
-          type: args[0].type || "keyup",
+          type: args[0].type || 'keyup',
           filter: args[0].filter,
           target: args[0].target,
         };

@@ -1,9 +1,9 @@
 export const validateHotkey = (hotkey: string) => {
-  const splitKeys = hotkey.split("+");
+  const splitKeys = hotkey.split('+');
 
-  const hasShift = splitKeys.includes("Shift");
-  const hasCmd = splitKeys.includes("Cmd") || splitKeys.includes("Ctrl");
-  const hasOption = splitKeys.includes("Option") || splitKeys.includes("Alt");
+  const hasShift = splitKeys.includes('Shift');
+  const hasCmd = splitKeys.includes('Cmd') || splitKeys.includes('Ctrl');
+  const hasOption = splitKeys.includes('Option') || splitKeys.includes('Alt');
 
   return (evt: KeyboardEvent) => {
     if (hasShift && !evt.shiftKey) {
