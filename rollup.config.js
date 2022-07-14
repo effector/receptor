@@ -18,7 +18,7 @@ export default [
     external: ['effector'],
     plugins,
     output: {
-      file: './dist/patronum.js',
+      file: Package.module,
       format: 'es',
       sourcemap: true,
       externalLiveBindings: false,
@@ -29,7 +29,7 @@ export default [
     external: ['effector'],
     plugins,
     output: {
-      file: './dist/patronum.cjs',
+      file: Package.main,
       format: 'cjs',
       freeze: false,
       exports: 'named',
@@ -42,8 +42,8 @@ export default [
     external: ['effector'],
     plugins,
     output: {
-      name: 'patronum',
-      file: './dist/patronum.umd.js',
+      name: 'effectorReceptor',
+      file: Package.browser,
       format: 'umd',
       exports: 'named',
       sourcemap: true,
