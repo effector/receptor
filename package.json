@@ -4,9 +4,10 @@
   "peerDependencies": {
     "effector": "^22.3.0"
   },
-  "main": "./index.js",
-  "module": "./index.mjs",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/receptor.cjs.js",
+  "module": "./dist/receptor.mjs",
+  "typings": "./dist/receptor.d.ts",
+  "browser": "./dist/receptor.umd.js",
   "exports": {
     ".": {
       "import": "./index.mjs",
