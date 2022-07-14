@@ -9,13 +9,15 @@ const plugins = [
   terser({}),
 ];
 
-const input = 'dist/index.cjs';
+const external = Object.keys(Package.peerDependencies)
+
+const input = 'src/index.ts';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
-    input: 'dist/index.js',
-    external: ['effector'],
+    input,
+    external,
     plugins,
     output: {
       file: Package.module,
@@ -26,7 +28,7 @@ export default [
   },
   {
     input,
-    external: ['effector'],
+    external,
     plugins,
     output: {
       file: Package.main,
@@ -39,7 +41,7 @@ export default [
   },
   {
     input,
-    external: ['effector'],
+    external,
     plugins,
     output: {
       name: 'effectorReceptor',
