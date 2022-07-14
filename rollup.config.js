@@ -1,11 +1,18 @@
 const { terser } = require('rollup-plugin-terser');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
+const { babel } = require('@rollup/plugin-babel')
+const { default: dts } = require('rollup-plugin-dts')
 const Package = require('./package.json')
 
+const extensions = ['.js', '.mjs', '.ts', '.tsx', '.cjs']
+
+const resolver = nodeResolve({ jsnext: true, skip: ['effector'], extensions });
+
 const plugins = [
-  nodeResolve({ jsnext: true, skip: ['effector'], extensions: ['.js', '.mjs'] }),
-  commonjs({ extensions: ['.js', '.mjs'] }),
+  babel({ extensions, babelHelpers: 'bundled' }),
+  resolver,
+  commonjs({ extensions }),
   terser({}),
 ];
 
@@ -55,4 +62,13 @@ export default [
       },
     },
   },
+  {
+    input,
+    external,
+    plugins: [resolver, dts()],
+    output: {
+      file: Package.types,
+      format: 'es'
+    }
+  }
 ];
