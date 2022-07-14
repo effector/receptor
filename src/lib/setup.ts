@@ -1,4 +1,4 @@
-import { createEvent, Effect, Event, restore, scopeBind } from "effector";
+import { createEvent, Effect, Event, restore, scopeBind } from 'effector';
 
 type SetupCallback<T> = (scopedEvent: T) => (scopedEvent: T) => void;
 
@@ -39,7 +39,7 @@ export const setup = <T extends Event<any> | Effect<any, any, any>>(params: {
 export const createSubscriber = <T>(
   getTarget: () => T,
   evtName: string,
-  extraParams: AddEventListenerOptions = {}
+  extraParams: AddEventListenerOptions = {},
 ) => {
   return (callback: Event<any>) => {
     let target: T;
@@ -48,8 +48,7 @@ export const createSubscriber = <T>(
     } catch {
       return () => {};
     }
-    if (target !== undefined)
-      target.addEventListener(evtName, callback, extraParams);
+    if (target !== undefined) target.addEventListener(evtName, callback, extraParams);
     return () => {
       target.removeEventListener(evtName, callback, extraParams);
     };
@@ -71,7 +70,7 @@ export const setupListener = <T extends Event<any>>(params: {
 export const setupDocument = <T extends Event<any>>(
   type: string,
   event: T,
-  modifiers: AddEventListenerOptions = {}
+  modifiers: AddEventListenerOptions = {},
 ) => {
   return setupListener({ type, event, target: () => document, modifiers });
 };
@@ -79,7 +78,7 @@ export const setupDocument = <T extends Event<any>>(
 export const setupWindow = <T extends Event<any>>(
   type: string,
   event: T,
-  modifiers: AddEventListenerOptions = {}
+  modifiers: AddEventListenerOptions = {},
 ) => {
   return setupListener({ type, event, target: () => window, modifiers });
 };
@@ -87,7 +86,7 @@ export const setupWindow = <T extends Event<any>>(
 export const setupNavigator = <T extends Event<any>>(
   type: string,
   event: T,
-  modifiers: AddEventListenerOptions = {}
+  modifiers: AddEventListenerOptions = {},
 ) => {
   return setupListener({ type, event, target: () => navigator, modifiers });
 };

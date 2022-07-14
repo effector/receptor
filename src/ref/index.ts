@@ -1,4 +1,4 @@
-import { createEvent, createStore } from "effector";
+import { createEvent, createStore } from 'effector';
 
 /** Creates single-ref store */
 export const createRefStore = <El extends HTMLElement>() => {
@@ -19,9 +19,7 @@ export const createRefListStore = <El extends HTMLElement>() => {
 
   $current
     .on(refAdded, (currents, current) => [...currents, current])
-    .on(refRemoved, (currents, current) =>
-      currents.filter((curCurrent) => curCurrent !== current)
-    );
+    .on(refRemoved, (currents, current) => currents.filter((curCurrent) => curCurrent !== current));
 
   return { $current, refAdded, refRemoved };
 };
