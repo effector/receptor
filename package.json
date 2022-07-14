@@ -7,7 +7,8 @@
     "test": "jest --passWithNoTests",
     "build": "rollup --config ./rollup.config.js",
     "prepublishOnly": "yarn build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format:check": "prettier './**/**.{ts,tsx,js,jsx,mjs,cjs,md}' --check"
   },
   "files": [
     "dist",
