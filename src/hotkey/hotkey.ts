@@ -14,7 +14,8 @@ interface hotkeyT {
   (params: {
     key: KeyboardEvent['key'];
     type?: keyof typeof keyEvents;
-    filter?: Store<boolean>;
+    filter?: Store<boolean> | ((evt: KeyboardEvent) => boolean);
+
     target?: Target;
   }): Event<KeyboardEvent>;
 }
@@ -37,7 +38,7 @@ export const hotkey: hotkeyT = (...args) => {
   if (normalizedParams.filter) {
     keyTriggered = guard({
       clock: keyTriggered,
-      filter: normalizedParams.filter as Store<boolean>,
+      filter: normalizedParams.filter,
     });
   }
   if (normalizedParams.target) {
