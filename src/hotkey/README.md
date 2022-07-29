@@ -47,7 +47,7 @@ const spaceDown = hotkey('Space', 'keydown');
 
 ```tsx
 import { createStore } from 'effector';
-import { hotkey, isFormElementFocused } from 'effector-receptor';
+import { hotkey, isOutsideFormElement } from 'effector-receptor';
 
 const $isConfirmModalOpened = createStore(true);
 
@@ -65,7 +65,7 @@ hotkey({
 
 hotkey({
   key: 'Ctrl+ArrowUp',
-  filter: () => !isFormElementFocused(),
+  filter: isOutsideFormElement,
   target: triggersOnlyOutsideTextareas,
 });
 ```
